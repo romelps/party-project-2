@@ -14,34 +14,78 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(methodOverride('_method'))
 
-const Party = require('./models/party.js')
+const PartyPlanner = require('./models/party.js')
 
 //home page
 app.get('/', (req, res) => {
     res.render("home.ejs");
 });
 
-app.get('/parties', async (req, res) => {
-    const allParties = await Party.find({});
-    res.render('parties/index.ejs', {
-        parties: allParties
+//takes us to edit page
+app.get('/parties/:partyId/edit', async (req, res) => {
+    const foundParty = await PartyPlanner.findById(req.params.partyId) //we find the id itself first
+    res.render('parties/edit.ejs', {
+        party: foundParty
     })
 })
 
+app.delete('/parties/:partyId', async (req, res) => {
+    await PartyPlanner.findByIdAndDelete(req.params.partyId);
+    res.redirect('/parties');
+})
+
+app.get('/parties', async (req, res) => {
+    const allParties = await PartyPlanner.find({});
+    res.render('parties/index.ejs', {
+        parties: allParties
+    });
+});
+
+
+
 app.post('/parties', async (req, res) => {
-    const newParty = new Party({ name, date, openInvite, theme, numGuests})
+    console.log(req.body)
+    const { name, date, address, openInvite, theme, dressCode, numGuests, guestList, budget } = req.body;
+    //const newParty = PartyPlanner(req.body);
     if(req.body.openInvite === 'on'){
         req.body.openInvite = true;
     }
     else {
         req.body.openInvite = false;
     }
-    await Party.create(req.body);
+    await PartyPlanner.create(req.body);
+    res.redirect('/parties');
+})
+
+
+//does the actual editting
+app.put('/parties/:partyId', async (req, res) => {
+    if(req.body.openInvite === 'on'){
+        req.body.openInvite = true;
+    }
+    else {
+        req.body.openInvite = false;
+    }
+    await PartyPlanner.findByIdAndUpdate(req.params.partyId, req.body);
     res.redirect('/parties');
 })
 
 app.get('/parties/new', (req, res) => {
     res.render('parties/new.ejs')
+})
+
+// const updateDate = () => {
+//     const d = new Date();
+//     let req.body.date = d.toDateString();
+//      //syntax from w3 schools
+// }
+
+app.get('/parties/:partyId', async (req, res) => {
+    //updateDate();
+    const foundParty = await PartyPlanner.findById(req.params.partyId)
+    res.render('parties/show.ejs', {
+        party: foundParty
+    })
 })
 
 

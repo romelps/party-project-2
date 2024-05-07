@@ -17,7 +17,15 @@
 
         <div>
             <label>When is the party?</label>
-            <input type="date"/>
+            <input type="dateTime" name="date" id="date"/>
+            <!-- <input type="time" name="time"/> -->
+        </div>
+
+        <br></br>
+
+        <div>
+            <label>Where is the party?</label>
+            <input type="text" name="address"/>
         </div>
 
         <br></br>
@@ -30,26 +38,55 @@
         <br><br/>
 
         <div>
-            <label for="theme" class="label">Theme: </label>
-            <details>Ex. Spongebob</details>
-            <input type="text" name="name"/>
+            <label class="label">Type/Theme: </label>
+            <details>Ex. Potluck, brunch, Spongebob, etc.</details>
+            <input type="text" name="theme"/>
             
+        </div>
+
+        <br>
+
+        <div>
+            <!-- <form action="/parties" method="get"> don't need -->
+            <label>Dress Code: </label>
+            <input list="dressCodes" name="dressCode"/>
+                <datalist id="dressCodes"> <!--list and id should be the same for pull down menu to work-->
+                    <option value="Casual">
+                    <option value="Dressy Casual">
+                    <option value="Business Attire">
+                    <option value="Black Tie">
+                    <option value="Costume">
+                    <option value="Cocktail">
+                </datalist>
+            <!-- </form> -->
         </div>
 
         <br></br>
 
         <div>
-            <label for="numGuests">How many guests? </label>
+            <label>How many guests? </label>
             <input type="number" name="numGuests"/>
-            <!-- <div class="dropdown-content">
-                 <p>1</p>
-                 <p>2</p>
-                 <p>3</p>
-            </div> -->
+            
         </div>
 
+        <br>
+
         <div>
-            <input type="reset" calue="Reset">
+            <label>Guest list: </label>
+            <input type="text" name="guestList"/>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Budget: </label>
+            <input type="number" name="budget"/>
+        </div>
+
+        <br>
+
+        <div>
+            <input type="reset" value="Reset">
             <button type="submit">Add Party</button>
         </div>
     </form>

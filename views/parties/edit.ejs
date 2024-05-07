@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%=party.name%></title>
+</head>
+<body>
+    <h1>Edit <%=party.name%></h1>
+    <form action="/parties/<%=party._id%>?_method=PUT" method="POST">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" value="<%=party.name%>"/>
+        </div>
+
+        <br></br>
+
+        <div>
+            <label>When is the party? </label>
+            <input type="datetime" name="date" id="date" value="<%=party.date%>"/>
+            <input type="time" name="time" value="<%=party.time%>"/>
+        </div>
+       
+
+        <br></br>
+
+        <div>
+            <label>Where is the party?</label>
+            <input type="text" name="address" value="<%=party.address%>"/>
+            
+        </div>
+
+        <br></br>
+
+        <div>
+            <label>Open invite?</label>
+            <input
+                type="checkbox" 
+                name="openInvite"
+                <% if(party.openInvite){ %>
+                    checked
+                <% } %>
+            />
+        </div>
+
+        <br><br/>
+
+        <div>
+            <label class="label">Type/Theme: </label>
+            <details>Ex. Potluck, brunch, Spongebob, etc.</details>
+            <input type="text" name="theme" value="<%=party.theme%>"/>
+            
+        </div>
+
+        <div>
+            <label>Dress Code: </label>
+            <input list="dressCodes" name="dressCode" value="<%=party.dressCode%>"/>
+                <datalist id="dressCodes"> <!--list and id should be the same for pull down menu to work-->
+                    <option value="Casual">
+                    <option value="Dressy Casual">
+                    <option value="Business Attire">
+                    <option value="Black Tie">
+                    <option value="Costume">
+                    <option value="Cocktail">
+                </datalist>
+        </div>
+
+        <br></br>
+
+        <div>
+            <label>How many guests? </label>
+            <input type="number" name="numGuests" value="<%=party.numGuests%>"/>
+           
+        </div>
+
+        <div>
+            <label>Guest list</label>
+            <input type="text" name="guestList" value="<%=party.guestList%>"/>
+        </div>
+
+        <div>
+            <label>Budget: </label>
+            <input type="number" name="budget" value="<%=party.budget%>"/>
+        </div>
+
+        <div>
+            <input type="reset" value="Reset">
+            <button type="submit">Update Party</button>
+        </div>
+
+        <a href="/parties">Back to Party List</a>
+
+    </form>
+</body>
+</html>

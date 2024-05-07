@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=party.name%></title>
+</head>
+<body>
+    <h1><%=party.name%></h1>
+    <h3>Details: </h3>
+    <p>When: 
+        <!-- <% const d = new Date(); %>
+        <% let date = d.toDateString(); %> -->
+        <%=party.date%> <%=party.time%></p>
+    <p>Where <%=party.address%></p>
+
+    <% if(party.openInvite){ %>
+        <p>Open invite: YES</p>
+    <% } else { %>
+        <p>Open invite: NO</p>
+    <% } %>
+
+    <p>Theme: <%=party.theme%></p>
+
+    <p>Dress Code: <%=party.dressCode%></p>
+
+    <p><%=party.guestList%></p>
+
+    <p>$<%=party.budget%></p>
+
+    
+    <a href="/parties">Party List</a>
+    <a href="/parties/<%=party._id%>/edit">Edit <%=party.name%></a>
+    <form action="/parties/<%=party._id%>?_method=DELETE" method="POST">
+        <button>Delete <%=party.name%></button>
+    </form>
+</body>
+</html>
