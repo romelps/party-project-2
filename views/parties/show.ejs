@@ -7,33 +7,51 @@
     <title><%=party.name%></title>
 </head>
 <body>
-    <h1><%=party.name%></h1>
-    <h3>Details: </h3>
-    <p>When: 
-        <% const d = new Date(); %>
-        <% let date = d.toLocaleString('en-US'); %>
-        <%=party.date%> <%=party.time%></p>
-    <p>Where: <%=party.address%></p>
-
-    <% if(party.openInvite){ %>
-        <p>Open invite: YES</p>
-    <% } else { %>
-        <p>Open invite: NO</p>
-    <% } %>
-
-    <p>Theme: <%=party.theme%></p>
-
-    <p>Dress Code: <%=party.dressCode%></p>
-
-    <p>Guest List: <%=party.guestList%></p>
-
-    <p>Budget: $<%=party.budget%></p>
-
+    <header>
+        <h1><%=party.name%></h1>
+        <ul class="nav">
+            <li class="active"><a href='/'>Home</a></li>
+            <li><a href="/parties">Party List</a></li>
+            <li><a href="/parties/new">New Party</a></li>
+        </ul>
+    </header>
     
-    <button><a href="/parties">Party List</a></button>
-    <button><a href="/parties/<%=party._id%>/edit">Edit <%=party.name%></a></button>
+    <div id="showForm">
+        <h2>When:</h2>
+        <p> 
+            <% const d = new Date(); %>
+            <% let date = d.toLocaleString('en-US'); %>
+            <%=party.date%> <%=party.time%>
+        </p><br>
+
+        <h2>Where:</h2>
+        <p><%=party.address%></p><br>
+
+        <% if(party.openInvite){ %>
+            <h2>Open Invite: </h2><p>YES</p>
+        <% } else { %>
+            <p>Open invite: NO</p>
+        <% } %>
+
+        <br>
+
+        <h2>Theme:</h2>
+        <p><%=party.theme%></p><br>
+
+        <h2>Dress Code:</h2>
+        <p><%=party.dressCode%></p><br>
+
+        <h2>Guest List:</h2>
+        <p><%=party.guestList%></p><br>
+
+        <h2>Budget:</h2>
+        <p>$<%=party.budget%></p><br>
+
+    </div>
+    
+    <button class="showBtn"><a href="/parties/<%=party._id%>/edit">Edit <%=party.name%></a></button><br></br>
     <form action="/parties/<%=party._id%>?_method=DELETE" method="POST">
-        <button>Delete <%=party.name%></button>
+        <button class="showBtn">Delete <%=party.name%></button>
     </form>
 </body>
 </html>

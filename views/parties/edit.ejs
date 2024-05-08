@@ -7,7 +7,7 @@
     <title>Edit <%=party.name%></title>
 </head>
 <body>
-    <h1>Edit <%=party.name%></h1>
+    <h1 id="editH1">Edit <%=party.name%></h1><br>
     <form action="/parties/<%=party._id%>?_method=PUT" method="POST">
         <div>
             <label>Name:</label>
@@ -53,6 +53,8 @@
             
         </div>
 
+        <br></br>
+
         <div>
             <label>Dress Code: </label>
             <input list="dressCodes" name="dressCode" value="<%=party.dressCode%>"/>
@@ -74,20 +76,32 @@
            
         </div>
 
+        <br></br>
+
         <div>
-            <label>Guest list</label>
-            <input type="text" name="guestList" value="<%=party.guestList%>"/>
+            <label>Guest list: </label>
+            <textarea
+            name="guestList" 
+            value="<%=party.guestList%>"
+            rows="10"
+            cols="50"></textarea>
         </div>
+
+        <br></br>
 
         <div>
             <label>Budget: </label>
             <input type="number" name="budget" value="<%=party.budget%>"/>
         </div>
 
+        <br></br>
+
         <div>
-            <input type="reset" value="Reset">
+            <input type="reset" value="Reset" id="reset">
             <button type="submit">Update Party</button>
         </div>
+
+        
 
         <a href="/parties">Back to Party List</a>
 

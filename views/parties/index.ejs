@@ -7,8 +7,17 @@
     <title>Party List</title>
 </head>
 <body>
-    <h1>Party List</h1>
-    <ul>
+    <header>
+        <h1>Party List</h1>
+        <ul class="nav">
+            <li class="active"><a href='/'>Home</a></li>
+            <li><a href="/parties">Party List</a></li>
+            <li><a href="/parties/new">New Party</a></li>
+        </ul>
+    </header>        
+
+    <div>
+    <ul id="index">
         <% parties.forEach((party) => { %>
             <li>
                 <a href="/parties/<%=party._id%>">
@@ -17,7 +26,8 @@
             </li>
         <% }) %>
     </ul>
-    <a href="/">Home Page</a>
-    <a href="/parties/new">New Party</a>
+    </div>
+
+    
 </body>
 </html>

@@ -1,9 +1,135 @@
-
-
-body {
-    background-color: olive;
+* {
+    box-sizing: border-box;
+    margin: auto;
+    padding: auto;
 }
 
-button, a {
-    color: teal;
+header {
+    background-size: cover;
+    background-color: darkolivegreen;
+}
+
+.nav {
+    display: inline-block;
+    list-style-type: none; /*no bullet points*/
+    margin: 0;
+    padding: 0 20px 0 20px;
+    overflow: hidden;
+    background-color: maroon;
+    border-radius: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%
+    
+}
+
+li {
+    float: left;
+    padding: 15px 20x;
+    color: whitesmoke
+}
+
+h1 {
+    font-size: 75px;
+}
+
+body {
+    
+    background-color: olive;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 
+.homeBtn {
+    background-color: whitesmoke;
+} */
+
+
+
+button, a, li, #reset {
+    
+    padding: 10px ;
+   
+}
+
+/* button {
+    margin: 15px; 
+} */
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+#index {
+    display:grid;
+}
+
+
+
+/* li, a {
+    display: block;
+    text-align: center;
+} */
+
+ul a:hover:not(.active) {
+    background-color: darkmagenta;
+
+}
+
+.active {
+    display: block;
+    background-color: darkred;
+    background-size: cover;
+  
+    
+}
+
+button, #reset {
+    display: inline-block;
+    background-color: darkslategrey;
+    color: whitesmoke;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 10px;
+}
+
+label, details {
+    display: block;
+    color: beige;
+    font-size: 20px;
+}
+
+input, textarea {
+    background-color: bisque;
+    border-radius: 20px;
+    border: 15px maroon;
+    padding: 10px;
+}
+
+#editH1, #newH1 {
+    font-size: 50px;
+    color: maroon;
+    box-shadow: 0 10px 15px 0 darkolivegreen;
+    background-color: darkolivegreen;
+    position: sticky;
+    top: 0;
+}
+
+#dressCode {
+    background-color: darkslategrey;
+}
+
+#showForm {
+    background-color: bisque;
+    margin: 55px;
+    text-align: center;
+}
+
+.showBtn {
+    display: block;
 }
