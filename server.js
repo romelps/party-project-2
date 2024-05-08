@@ -16,6 +16,9 @@ app.use(methodOverride('_method'))
 
 const PartyPlanner = require('./models/party.js')
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public"))); //these two lines are needed to use css
+
 //home page
 app.get('/', (req, res) => {
     res.render("home.ejs");
@@ -91,7 +94,7 @@ app.get('/parties/:partyId', async (req, res) => {
 
 
 mongoose.connection.on('connected', () => {
-    console.log(`Connected to MongoDB ${mongoose.connection.name}`)
+    console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
 })
   
 app.listen(2600, () => {
