@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const dotenv = require('dotenv');
-dotenv.config()
+dotenv.config();
 
 const morgan = require('morgan');
 const methodOverride = require('method-override');
@@ -97,6 +97,6 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
 })
   
-app.listen(2600, () => {
-    console.log('listening on port 2600');
+app.listen(2700, () => {
+    console.log('listening on port 2700');
 });
