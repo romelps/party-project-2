@@ -1,9 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-const dotenv = require('dotenv');
-dotenv.config();
 
 const morgan = require('morgan');
 const methodOverride = require('method-override');
@@ -11,11 +11,10 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI)
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
-app.use(methodOverride('_method'))
-
-const PartyPlanner = require('./models/party.js')
+const PartyPlanner = require('./models/party.js');
 
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public"))); //these two lines are needed to use css
