@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -97,6 +98,6 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
 })
   
-app.listen(2700, () => {
-    console.log('listening on port 2700');
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
